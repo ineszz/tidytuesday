@@ -22,3 +22,12 @@ https://github.com/rfordatascience/tidytuesday/tree/master/data/YYYY/YYYY-MM-DD
 e.g. https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-02-02
 
 Enjoy the tidying!
+
+
+## 2022
+
+week 2
+
+- [Week 2](t2022_week2.Rmd) 
+
+<img src="https://github.com/ineszz/tidytuesday/blob/main/wk2.png" width=55% height=55%>

@@ -1,0 +1,87 @@
+---
+title: "week2: 11.01.2022"
+output: github_document
+---
+
+```{r}
+library(tidyverse)
+library(tidytuesdayR)
+library(ggplot2)
+library(ggtext)
+library(scales)
+#library(ggrepel)
+theme_set(theme_light())
+
+```
+
+
+```{r}
+# tuesdata <- tidytuesdayR::tt_load(2021, week = 51)
+tuesdata <- tidytuesdayR::tt_load('2022-01-11')
+```
+
+
+```{r, dataframes}
+df1<-tuesdata$colony %>% data.frame()
+#df2<-tuesdata$stressor
+
+```
+
+```{r}
+theme_strip <- theme_minimal()+
+                 theme(plot.caption = element_markdown(size = 7, hjust=0.5, color="#252525"),
+                       axis.text.y = element_blank(),
+                       axis.line.y = element_blank(),
+                       axis.title = element_blank(),
+                       panel.grid.major = element_blank(),
+                       legend.title = element_blank(),
+                       axis.text.x = element_text(vjust = 3),
+                       panel.grid.minor = element_blank(),
+                       plot.title = element_text(size = 14, face = "bold"),
+                       plot.margin = margin(6,4,4,4,"mm")
+                       )
+
+library(RColorBrewer)
+col_strip <- brewer.pal(11, "RdBu")
+
+brewer.pal.info
+```
+
+
+```{r}
+ks <- function (x) { number_format(accuracy = 1,
+                                   scale = 1/1000,
+                                   suffix = "k",
+                                   big.mark = ",")(x) }
+
+p<-df1 %>% filter(state=='United States', year>=2018) %>% 
+  mutate(qrt = case_when(str_detect(months, "^Jan") ~ "Q1",
+                         str_detect(months, "^April") ~ "Q2",
+                         str_detect(months, "^July") ~ "Q3",
+                         str_detect(months, "^October") ~ "Q4",
+                         is.na(months) ~ months,
+                         TRUE ~ "NA" ),
+         year_qrt=paste0(year, "-", qrt)
+         ) %>% 
+  select (year, months, qrt,year_qrt, colony_n) %>% 
+  ggplot(aes( x=year_qrt, y=colony_n))+
+  geom_col()+
+  geom_text(
+    aes(label = ks(colony_n)),
+    size = 3,
+    vjust = -0.5
+  )+
+  labs(
+            title = "United States Bees Colonies over the quarters starting 2018 ",
+            subtitle = " ('000)",
+            caption = " #tidytuesday| 2022 Week 2 | by inesz",
+            x="",
+            y=""
+            )+
+  theme_strip
+
+p
+
+ggsave("wk2.png", height = 3.5, width = 7, dpi=300)
+```
+
