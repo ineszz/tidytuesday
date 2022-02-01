@@ -32,20 +32,20 @@ week 2
 - [Week 2](t2022_week2.Rmd) 
 
 <img src="https://github.com/ineszz/tidytuesday/blob/main/wk2.png" width=55% height=55%>
-=======
+
 week 3
 
 
 - [Week 3](t2022_week3.Rmd) 
 
 <img src="https://github.com/ineszz/tidytuesday/blob/main/wk3.png" width=55% height=55%>
-=======
+
 week 4
 
 
 - [Week 4](t2022_week4.Rmd) 
 
 <img src="https://github.com/ineszz/tidytuesday/blob/main/wk4.png" width=55% height=55%>
-=======
+
 
 
