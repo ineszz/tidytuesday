@@ -54,5 +54,9 @@ week 5
 
 <img src="https://github.com/ineszz/tidytuesday/blob/main/wk5.png" width=55% height=55%>
 
+- [Week 11](t2022_week11.Rmd) 
+
+<img src="https://github.com/ineszz/tidytuesday/blob/main/wk11.png" width=55% height=55%>
+
 
 
